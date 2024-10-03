@@ -25,6 +25,13 @@
             max-width: 90%;
             max-height: 90%;
             object-fit: contain;
+            opacity: 0; /* Start with hidden image */
+            transition: opacity 1s ease; /* Smooth transition */
+        }
+
+        /* Show image when in screensaver mode */
+        #screensaver.show img {
+            opacity: 1; /* Fade in image */
         }
     </style>
 </head>
@@ -122,6 +129,7 @@
 
         document.getElementById('screensaver-btn').addEventListener('click', () => {
             document.getElementById('screensaver').style.display = 'flex';
+            document.getElementById('screensaver').classList.add('show'); // Add class for transition
             enterFullscreen();
             startScreensaver();
         });
@@ -134,6 +142,14 @@
         function changeImage() {
             const img = document.getElementById('screensaver-img');
             img.src = images[currentIndex];
+
+            // Fade out then fade in
+            img.style.opacity = 0; // Start fade out
+            setTimeout(() => {
+                img.src = images[currentIndex];
+                img.style.opacity = 1; // Fade in
+            }, 1000); // Wait for fade out to complete
+
             currentIndex = (currentIndex + 1) % images.length; // Loop through images
         }
 
@@ -154,6 +170,7 @@
         document.getElementById('screensaver').addEventListener('click', () => {
             clearInterval(screensaverInterval);
             document.getElementById('screensaver').style.display = 'none';
+            document.getElementById('screensaver').classList.remove('show'); // Remove class for transition
             exitFullscreen();
         });
 
