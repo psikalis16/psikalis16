@@ -26,7 +26,7 @@
             max-height: 90%;
             object-fit: contain;
             opacity: 0; /* Start with hidden image */
-            transition: opacity 1s ease; /* Smooth transition */
+            transition: opacity 3s ease; /* Smooth transition */
         }
 
         /* Show image when in screensaver mode */
@@ -149,7 +149,7 @@
 
         function startScreensaver() {
             changeImage();
-            screensaverInterval = setInterval(changeImage, 3000); // Change image every 3 seconds
+            screensaverInterval = setInterval(changeImage, 6000); // Change image every 6 seconds
         }
 
         function changeImage() {
@@ -161,7 +161,7 @@
             setTimeout(() => {
                 img.src = images[currentIndex];
                 img.style.opacity = 1; // Fade in
-            }, 1000); // Wait for fade out to complete
+            }, 3000); // Wait for fade out to complete
 
             currentIndex = (currentIndex + 1) % images.length; // Loop through images
         }
