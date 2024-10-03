@@ -4,47 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nature Photography Blog</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <header>
-        <h1>Nature Photography</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-        </nav>
+<body class="bg-gray-100 text-gray-900">
+
+    <!-- Header -->
+    <header class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-3xl font-bold">Nature Photography</h1>
+            <nav>
+                <a href="index.html" class="text-white px-4 hover:underline">Home</a>
+                <a href="about.html" class="text-white px-4 hover:underline">About</a>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <section class="blog-posts">
-            <article>
-                <img src="images/2024/BostonSunset.jpg" alt="Boston sunset">
-                <h4>Charles River, Boston, MA</h4>
+    <!-- Main Content -->
+    <main class="container mx-auto py-8">
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <article class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <img src="images/2024/BostonSunset.jpg" alt="Boston sunset" class="w-full h-64 object-cover">
+                <div class="p-4">
+                    <h4 class="font-bold text-lg">Charles River, Boston, MA</h4>
+                </div>
             </article>
-            <article>
-                <img src="images/2024/BayberyHillsLinksCourse.jpg" alt="Bayberry Hills Links Course">
-                <h4>Bayberry Hills Golf Course, West Yarmouth, MA</h4>
+            <article class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <img src="images/2024/BayberyHillsLinksCourse.jpg" alt="Bayberry Hills Links Course" class="w-full h-64 object-cover">
+                <div class="p-4">
+                    <h4 class="font-bold text-lg">Bayberry Hills Golf Course, West Yarmouth, MA</h4>
+                </div>
             </article>
-            <article></article>
-                <img src="images/2024/HarryTheHerren.jpg" alt="Harry the Herren">
-                <h4>Harry the Herren, West Yarmouth, MA</h4>
+            <article class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <img src="images/2024/HarryTheHerren.jpg" alt="Harry the Herren" class="w-full h-64 object-cover">
+                <div class="p-4">
+                    <h4 class="font-bold text-lg">Harry the Herren, West Yarmouth, MA</h4>
+                </div>
             </article>
-            <article>
-                <img src="images/2024/ManchesterByTheSea.jpg" alt="Macnhester by the Sea">
-                <h4>Manchester by the Sea, MA</h4>
+            <article class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <img src="images/2024/ManchesterByTheSea.jpg" alt="Manchester by the Sea" class="w-full h-64 object-cover">
+                <div class="p-4">
+                    <h4 class="font-bold text-lg">Manchester by the Sea, MA</h4>
+                </div>
             </article>
-            <article>
-                <img src="images/2024/WestYarmouthHappyHour.jpg" alt="West Yarmouth happy hour">
-                <h4>Happy Hour, West Yarmouth, MA</h4>
+            <article class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <img src="images/2024/WestYarmouthHappyHour.jpg" alt="West Yarmouth happy hour" class="w-full h-64 object-cover">
+                <div class="p-4">
+                    <h4 class="font-bold text-lg">Happy Hour, West Yarmouth, MA</h4>
+                </div>
             </article>
-            <article>
-                <img src="images/2024/DanburyCT.jpg" alt="Danbury CT">
-                <h4>Candlewood Lake, Danbury, CT</h4>
+            <article class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <img src="images/2024/DanburyCT.jpg" alt="Danbury CT" class="w-full h-64 object-cover">
+                <div class="p-4">
+                    <h4 class="font-bold text-lg">Candlewood Lake, Danbury, CT</h4>
+                </div>
             </article>
         </section>
     </main>
 
-    <footer>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center py-4">
         <p>&copy; 2024 Nature Photography Blog</p>
     </footer>
 
