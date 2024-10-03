@@ -5,16 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pistol Pete Photography</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Additional styles for the screensaver mode */
+        #screensaver {
+            display: none; /* Hide by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #screensaver img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+    </style>
 </head>
 <body class="bg-gray-100 text-gray-900">
 
     <!-- Header -->
     <header class="bg-gray-800 text-white py-4">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-3xl font-bold">Pistol Pete Photography</h1>
+            <h1 class="text-3xl font-bold">Nature Photography</h1>
             <nav>
                 <a href="index.html" class="text-white px-4 hover:underline">Home</a>
                 <a href="about.html" class="text-white px-4 hover:underline">About</a>
+                <button id="screensaver-btn" class="text-white bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded">Screensaver Mode</button>
             </nav>
         </div>
     </header>
@@ -74,10 +97,77 @@
         </section>
     </main>
 
+    <!-- Screensaver Mode -->
+    <div id="screensaver">
+        <img id="screensaver-img" src="" alt="Screensaver" />
+    </div>
+
     <!-- Footer -->
     <footer class="bg-gray-800 text-white text-center py-4">
         <p>&copy; 2024 Nature Photography Blog</p>
     </footer>
 
+    <script>
+        const images = [
+            'images/2024/BostonSunset.jpg',
+            'images/2024/BayberyHillsLinksCourse.jpg',
+            'images/2024/HarryTheHerren.jpg',
+            'images/2024/ManchesterByTheSea.jpg',
+            'images/2024/WestYarmouthHappyHour.jpg',
+            'images/2024/DanburyCT.jpg'
+        ];
+
+        let currentIndex = 0;
+        let screensaverInterval;
+
+        document.getElementById('screensaver-btn').addEventListener('click', () => {
+            document.getElementById('screensaver').style.display = 'flex';
+            enterFullscreen();
+            startScreensaver();
+        });
+
+        function startScreensaver() {
+            changeImage();
+            screensaverInterval = setInterval(changeImage, 3000); // Change image every 3 seconds
+        }
+
+        function changeImage() {
+            const img = document.getElementById('screensaver-img');
+            img.src = images[currentIndex];
+            currentIndex = (currentIndex + 1) % images.length; // Loop through images
+        }
+
+        function enterFullscreen() {
+            const screensaver = document.getElementById('screensaver');
+            if (screensaver.requestFullscreen) {
+                screensaver.requestFullscreen();
+            } else if (screensaver.mozRequestFullScreen) { // Firefox
+                screensaver.mozRequestFullScreen();
+            } else if (screensaver.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                screensaver.webkitRequestFullscreen();
+            } else if (screensaver.msRequestFullscreen) { // IE/Edge
+                screensaver.msRequestFullscreen();
+            }
+        }
+
+        // Close screensaver mode when clicking on the screen
+        document.getElementById('screensaver').addEventListener('click', () => {
+            clearInterval(screensaverInterval);
+            document.getElementById('screensaver').style.display = 'none';
+            exitFullscreen();
+        });
+
+        function exitFullscreen() {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+        }
+    </script>
 </body>
 </html>
